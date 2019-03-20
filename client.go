@@ -60,6 +60,8 @@ func (c *Client) Get(url string) []byte {
 		log.Fatalf("cli.Do err:%v\n", err)
 	}
 
+	defer resp.Body.Close()
+
 	//log.Printf("get resp request:%v\n", resp.Request)
 
 	if result, err = ioutil.ReadAll(resp.Body); err != nil {
